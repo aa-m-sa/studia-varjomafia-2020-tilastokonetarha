@@ -1,0 +1,113 @@
+% Original was created by Jan Eichstaedt, Imperial College London, June 2017
+% Heavily modified into a UTU like theme by Aaro Salosensaari, UTU, September 2019
+
+% Official UTU colors as-of-writing this template
+\definecolor{utuviolet}{RGB}{139 93 203}
+\definecolor{ututurquoise}{RGB}{120 200 210}
+\definecolor{utured}{RGB}{248 72 94}
+\definecolor{utugreen}{RGB}{173 203 0}
+\definecolor{utugreydark}{RGB}{134 134 134}
+\definecolor{utugreymiddle}{RGB}{177 177 177}
+\definecolor{utugreylight}{RGB}{217 217 217}
+% support colors
+\colorlet{utuvioletlight}{utuviolet!60!white}
+
+% ---------------------------------------------------------------------------
+\setbeamercolor{footline1}{fg=white, bg=utuviolet}
+\setbeamercolor{date in head/foot}{fg=white, bg=utuviolet}
+\setbeamercolor{section in head/foot}{fg=white, bg=black}
+\setbeamercolor{frametitle}{bg=white, fg=black}
+\setbeamercolor{title}{bg=white, fg=black}
+\setbeamercolor{subtitle}{bg=white, fg=black}
+\setbeamercolor{date}{bg=white, fg=black}
+
+\setbeamercolor{block body}{bg=utugreylight}
+%\setbeamercolor{block title}{fg=black, bg=ututurquoise}
+\setbeamercolor{block title}{fg=black, bg=utuvioletlight}
+
+\setbeamercolor{block body alerted}{bg=lightgrey}
+\setbeamercolor{block title alerted}{fg=black, bg=seaglass} % TODO
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=utured}
+\setbeamercolor{example text}{fg=utuviolet} % TODO
+
+\setbeamercolor{structure}{fg=utuviolet}
+
+\setbeamercolor{background canvas}{parent=normal text}
+\setbeamercolor{background}{parent=background canvas}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]{}
+\useinnertheme{rounded}
+
+
+% -------------------------------------------------------------------------
+\setbeamertemplate{title page}
+{
+	\vspace{16pt}
+	\begin{columns}[b]
+		\column{0.0125\textwidth}
+		\begin{beamercolorbox}[right]{institute}
+			\insertinstitute       
+		\end{beamercolorbox}
+		\column{0.4875\textwidth}
+		\column{0.4875\textwidth}
+        \begin{beamercolorbox}[right]{date}
+        	\usebeamerfont{date}\footnotesize\insertdate
+        \end{beamercolorbox}
+        \column{0.0125\textwidth}
+    \end{columns}
+    \vspace{20pt}	
+    \vfill
+	
+	\begingroup	   
+	    \begin{beamercolorbox}[left]{title}
+			\usebeamerfont{title}\Huge\inserttitle
+	    \end{beamercolorbox}
+	    \vskip1.5em\par
+	    \begin{beamercolorbox}[left]{subtitle}
+	        \usebeamerfont{subtitle}\Large\insertsubtitle
+	    \end{beamercolorbox}
+	    \vskip1em\par
+	    \begin{beamercolorbox}[left]{author}
+	        \usebeamerfont{author}\insertauthor
+	    \end{beamercolorbox}
+	\endgroup
+}
+
+
+% -------------------------------------------------------------------------
+\setbeamertemplate{frametitle}
+{
+	\vspace{16pt}	
+  	\hbox{%
+	\begin{beamercolorbox}[wd=.6\paperwidth]{frametitle}	
+	    \raggedright
+	    \LARGE{\insertframetitle}
+	    \hfill
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.4\paperwidth,left]{}
+	    \hfill
+	    \scalebox{0.6}{\insertinstitute}
+	\end{beamercolorbox}%
+	}%
+	\vspace{4pt}
+} 
+
+% -------------------------------------------------------------------------
+\setbeamertemplate{footline}
+{
+  \vspace{8pt}%
+    \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=0.66\paperwidth,ht=2.5ex,dp=1.5ex,center]{footline1}
+  \end{beamercolorbox}%
+  \hspace{-2pt}%
+  \begin{beamercolorbox}[wd=0.35\paperwidth,ht=2.5ex,dp=1.5ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber{} \hspace*{2ex} \hspace{1em} %
+  \end{beamercolorbox}% 
+    \vskip0pt%
+  }
+}
