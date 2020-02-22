@@ -73,10 +73,10 @@
 
 \title{Kurkistus tilastollisesti oppivien koneiden eläintarhaan}
 
-% tavoitemitta: 30-45 min + keskustelu
+% tavoitemitta: 30-45 min + keskustelu = 15-20 sisältöslidea plus ekstrat
 \subtitle{Studia Varjomafia 4, Terrakoti}
 
-\author{Aaro Salosensaari aaro.salosensaari@utu.fi}
+\author{Aaro Salosensaari aaro.salosensaari@utu.fi. CC-BY-SA 4.0, paitsi fair use.}
 
 \date{22.2.2020}
 
@@ -84,11 +84,41 @@
  
 \frame{\titlepage}
 
+\section{Eläintarhan portti}
+
+
+\begin{frame}{}
+  \tableofcontents[currentsection]
+\end{frame}
+
 \begin{frame}{Mikä on tilastollisesti oppiva kone?}
+
+	\begin{columns}[]
+		\column{0.0125\textwidth}
+		\column{0.4875\textwidth}
+			\centering
+			    \includegraphics[width=\textwidth]{galaxy-brain-meme.jpg}
+		\column{0.4875\textwidth}
+		    \centering
+		    \includegraphics[width=\textwidth]{hal9000.png}
+		\column{0.0125\textwidth}
+	\end{columns}
     
 \end{frame}
 
-\begin{frame}{Algoritmi}
+\begin{frame}{Tilastollisesti oppiva kone on ... ?}
+
+    Eräs epätarkasti yksinkertaistettu määritelmä:
+    
+    \begin{block}{Tilastollinen koneoppimisalgoritmi}
+    Algoritmi, joka oppii aineistosta ("data") antamaan vastauksia jotka todennäköisesti ($=$ tilastollisesti keskimäärin) ovat oikein.
+    \end{block}
+    
+    \pause
+    Seuraava kysymys: Mitä tarkoittaa oppiminen?
+\end{frame}
+
+\begin{frame}{Algoritmi joka ei opi}
 	\begin{columns}[]
 		\column{0.0125\textwidth}
 		\column{0.4875\textwidth}
@@ -97,16 +127,256 @@
 				\includegraphics[width=\textwidth]{quicksort.png} \
 				% remove the 'draft' keyword, when replacing with final figure!
 				% \inlineMovie[loop&autostart&start=5&stop=12]{apollo17.avi}{apollo17.jpg}{height=0.7\textheight}
-				\caption{Caption of Figure C}
+				\caption*{Quicksort-algoritmi järjestää lukuja askel askeleelta, ja antaa todistettavasti oikean ratkaisun jokaiselle lukujonolle.}
 			\end{figure}
 		\column{0.4875\textwidth}
 		    \centering
-		    \inlineMovie[loop&autostart]{msortin.avi}{sorting_gif-0.png}{width=\textwidth}
+		    \begin{figure}
+		        \inlineMovie[loop&autostart]{msortin.avi}{sorting_gif-0.png}{width=\textwidth}
+		        \caption*{Kuvalähde:[1] }
+		    \end{figure}
 		\column{0.0125\textwidth}
 	\end{columns}
-    \includegraphics[]{}
 \end{frame}
 
+\begin{frame}{Algoritmit jotka oppivat}
+    
+    Algoritmi (ihmisen koodaama ohjelmakoodi) ei ratkaise ongelmaa itsessään (vrt. edel. kalvon quicksort).
+    %
+    \pause
+    
+    Sen sijaan ns. oppiva algoritmi koostuu usein oikeastaan kahdesta osasta:
+    \pause
+    \begin{enumerate}
+        \item Malli (jossa on parametreja).
+        \item Algoritmi, joka kertoo kuinka valitaan eli \textbf{opitaan} parametrit joilla malli antaa (tilastollisesti keskimäärin) ratkaisuja johonkin \mathbf{tiettyyn} ongelmaan.
+    \end{enumerate}
+    \pause
+    	\begin{columns}[]
+		\column{0.0100\textwidth}
+		\column{0.4875\textwidth}
+			\centering
+				\includegraphics[width=0.6\textwidth]{lasse.jpg}
+	    \column{0.005\textwidth}
+	        vs.
+		\column{0.4875\textwidth}
+		    \centering
+				\includegraphics[width=0.6\textwidth]{nessie.jpg}
+
+		\column{0.0100\textwidth}
+	\end{columns}
+    
+\end{frame}
+
+\begin{frame}{Mitä tarkoittaa malli? Parametrit?}
+
+Apua!?
+\pause
+
+\includegraphics[width=0.9\textwidth]{malli_uusi.jpg}
+
+% malli ja parametrit
+
+
+\end{frame}
+
+\begin{frame}{Mallit ovat yleisiä}
+
+\includegraphics[width=0.9\textwidth]{mallit_ovat_yleisiä.jpg}
+
+
+% malli on yleiskäyttöinen: Lasse ja MNIST ovat kysymysmerkki
+
+\end{frame}
+
+\begin{frame}{Mitä tarkoittaa parametrien oppiminen: optimointialgoritmi}
+
+%\includegraphics[width=0.7\textwidth]{malli_ja_parametrien_oppiminen.jpg}
+
+% Mustekala säätää parametrit niin että Lasse on laiskiainen
+\includegraphics[width=0.9\textwidth]{malli_parametrit_lasse.jpg}
+
+
+\end{frame}
+
+\begin{frame}{Mitä tarkoittaa "tilastollisesti keskimäärin oikea vastaus"?}
+
+Tähän on tarkka matemaattinen vastaus$\to$ ei sillä väliä.
+
+\pause
+\begin{block}{Eräs käytännöllinen esimerkki:}
+
+\begin{enumerate}
+    \item<2-> Valitaan sääntö jolla mitata virheellisen vastauksen virheellisyyttä numerolla.
+    \item<3-> Jätetään sivuun osa datasta jota ei käytetty oppimiseen. (Testijoukko.)
+    \item<4-> Mitataan opetetun koneen vastausten virhe testijoukossa.
+\end{enumerate}
+
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{\textbf{Tilastollisesti} keskimäärin oikea vastaus: Ristiinvalidointi}
+
+Pätkitään data palasiin monta kertaa ja mitataan virhe monta kertaa!
+
+	\begin{figure}
+				\includegraphics[width=\textwidth]{kfold_wikipedia.png} \
+				\caption*{ Lähde: Wikipedia, User:Gufosowa, CC BY-SA 4.0 [3]}
+	\end{figure}
+
+%https://en.wikipedia.org/wiki/File:K-fold_cross_validation_EN.svg
+    
+\end{frame}
+
+\begin{frame}{Tiivistelmä johdannosta:}
+    Tilastollisesti oppiva kone:
+    \pause
+    \begin{enumerate}
+        \item Algoritmi joka ei opi (esimerkki quicksort): olemme kirjoittaneet sen niin että se antaa taatusti oikeita vastauksia.
+        \item Algoritmi joka oppii (esimerkiksi tämä esitelmä:) emme osaa / jaksa kirjoittaa algoritmia joka antaisi taatusti oikeita vastauksia.
+        Sen sijaan valitsemme yleisen mallin, jonka parametrit voimme säätää (opettaa) niin että se antaa keskimäärin oikeita vastauksia
+        \item Keskimäärin oikean vastauksen arviointi:
+    \end{enumerate}
+    
+\end{frame}
+
+
+\section{Ensimmäinen eläin: Logistinen regressio}
+
+\begin{frame}{}
+  \tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Eläinosion idea}
+    \includegraphics[width=0.9\textwidth]{malli_tuotos.jpg}
+\end{frame}
+
+\begin{frame}{Mistä eläinosiossa ei puhuta}
+        \includegraphics[width=0.9\textwidth]{malli_tuotos_optimointi.jpg}
+
+\end{frame}
+
+\begin{frame}{Eläinosion esimerkkidata: MNIST}
+    \includegraphics[width=0.4\textwidth]{mnist2.png}
+    
+    60000 käsinkirjoitettua numeroa jotka käsitelty kivasti.
+\end{frame}
+
+\begin{frame}{Logistinen regressio: Visuaalinen johdanto}
+    
+\end{frame}
+
+\begin{frame}{Lineaarinen regressio yhdellä kuvalla}
+        \includegraphics[width=0.4\textwidth]{lineaarinen1.jpg}
+\end{frame}
+
+\begin{frame}{Logistinen regressio kahdella kuvalla: 1}
+    \includegraphics[width=0.8\textwidth]{logistinen1.jpg}
+\end{frame}
+
+\begin{frame}{Logistinen regressio kahdella kuvalla: 2}
+    \includegraphics[width=0.8\textwidth]{logistinen2.jpg}
+\end{frame}
+
+\begin{frame}{Huijasin: Kolmas kuva}
+    \includegraphics[width=0.8\textwidth]{logistinen_perceptron.jpg}
+\end{frame}
+
+\section{Toinen eläin: Yksinkertainen neuroverkko}
+
+\begin{frame}{}
+  \tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Neuroverkot \textbf{hyvin} ytimekkäästi}
+    
+\end{frame}
+
+\begin{frame}{Pari sanaa neuroverkoista ja oikeista hermosoluista}
+    \begin{itemize}
+        \item<1-> Ihmisten, nisäkkäiden, muiden \textbf{hermoverkot}: yksittäiset hermosolut ovat monimutkaisia koneita.
+        \item<2-> Koneoppimisen \textb{neuroverkot}: koostuvat hyvin yksinkertaisista "neuroneista", muutama matemaattinen operaatio.
+        \item<3-> Yhteisyys: Yksinkertaiset palaset voivat tehdä monimutkaista laskentaa kun ne verkotetaan oikein. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Yksinkertaisin neuroverkko}
+        \includegraphics[width=0.8\textwidth]{logistinen_perceptron.jpg}
+        
+        \pause
+        Logistinen regressio on neuroverkko! (Perceptron.)
+\end{frame}
+
+\begin{frame}{Hieman monimutkaisempi neuroverkko (MLP)}
+    \includegraphics[width=0.5\textwidth]{mlp.jpg}
+\end{frame}
+
+
+\section{Kuinka eläimet selviytyvät luonnossa (MNIST-numeroiden luokittelussa)}
+
+\begin{frame}{}
+  \tableofcontents[currentsection]
+\end{frame}
+
+\begin{frame}{Miltä eläimemme näyttävät Julia-kielellä}
+    	\begin{columns}[]
+		\column{0.0100\textwidth}
+		\column{0.4875\textwidth}
+			\centering
+				\includegraphics[width=\textwidth]{logres_elain.png}
+
+		\column{0.4875\textwidth}
+		    \centering
+				\includegraphics[width=\textwidth]{mlp_elain.png}
+
+		\column{0.0100\textwidth}
+	\end{columns}
+    
+\end{frame}
+
+\begin{frame}{Kuinka eläimemme suoriutuvat numeroiden luokittelussa}
+
+\includegraphics[width=0.7\textwidth]{mlp_logres.png}
+
+\end{frame}
+
+\begin{frame}{Miltä näyttää MLP-eläimen luokittelukyky}
+
+
+    \begin{columns}[]
+		\column{0.0100\textwidth}
+		\column{0.2\textwidth}
+			\includegraphics[width=\textwidth]{mnist1_7.png}
+		\column{0.3\textwidth}
+			\centering
+				\includegraphics[width=\textwidth]{mnist_tst1_true.png}
+
+		\column{0.3\textwidth}
+		    \centering
+				\includegraphics[width=\textwidth]{mnist_mlp_prediction.png}
+
+		\column{0.0100\textwidth}
+	\end{columns}
+	\pause
+	\centering
+	\includegraphics[width=0.6\textwidth]{accuracy.png}
+
+\end{frame}
+
+
+\begin{frame}{Lopuksi: Neuroverkkoarkkitehtuureja}
+
+	\begin{figure}
+				\includegraphics[height=0.65\textheight]{NeuralNetworkZo19High.png} \
+
+				\caption*{Arkkitehtuureja on valtavasti ja kaikki tekevät erilaisia asioita hyvin, joskus. Lähde: Fjodor Van Veen, [2]}
+	\end{figure}
+
+%https://www.asimovinstitute.org/neural-network-zoo/
+    
+\end{frame}
 
 %\begin{frame}{Contents}
 %
@@ -145,7 +415,7 @@
 %\end{frame}
 
 
-\begin{frame}{References}
+\begin{frame}{Viitteitä}
     ...
 \end{frame}
 
