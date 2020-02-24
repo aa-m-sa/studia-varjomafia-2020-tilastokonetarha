@@ -14,7 +14,7 @@
 \usepackage{amssymb}
 \usepackage{fancybox}
 \usepackage{epstopdf}
-
+\usepackage{hyperref}
 \usepackage{pdfpc-commands}
 
 \usepackage{lipsum} % for template demonstration
@@ -133,7 +133,7 @@
 		    \centering
 		    \begin{figure}
 		        \inlineMovie[loop&autostart]{msortin.avi}{sorting_gif-0.png}{width=\textwidth}
-		        \caption*{Kuvalähde:[1] }
+		        \caption*{Kuvalähde: Wikipedia User:RolandH CC-BY-SA 3.0 [1] }
 		    \end{figure}
 		\column{0.0125\textwidth}
 	\end{columns}
@@ -223,7 +223,7 @@ Pätkitään data palasiin monta kertaa ja mitataan virhe monta kertaa!
 
 	\begin{figure}
 				\includegraphics[width=\textwidth]{kfold_wikipedia.png} \
-				\caption*{ Lähde: Wikipedia, User:Gufosowa, CC BY-SA 4.0 [3]}
+				\caption*{ Lähde: Wikipedia, User:Gufosowa, CC BY-SA 4.0 [2]}
 	\end{figure}
 
 %https://en.wikipedia.org/wiki/File:K-fold_cross_validation_EN.svg
@@ -371,7 +371,7 @@ Pätkitään data palasiin monta kertaa ja mitataan virhe monta kertaa!
 	\begin{figure}
 				\includegraphics[height=0.65\textheight]{NeuralNetworkZo19High.png} \
 
-				\caption*{Arkkitehtuureja on valtavasti ja kaikki tekevät erilaisia asioita hyvin, joskus. Lähde: Fjodor Van Veen, [2]}
+				\caption*{Arkkitehtuureja on valtavasti ja kaikki tekevät erilaisia asioita hyvin, joskus. Lähde: Fjodor Van Veen, [3]}
 	\end{figure}
 
 %https://www.asimovinstitute.org/neural-network-zoo/
@@ -415,8 +415,47 @@ Pätkitään data palasiin monta kertaa ja mitataan virhe monta kertaa!
 %\end{frame}
 
 
-\begin{frame}{Viitteitä}
-    ...
+\begin{frame}{Viitteitä, linkkejä ja kirjallisuutta}
+
+    {\footnotesize
+    [1] \texttt{https://commons.wikimedia.org/wiki/File:Sorting\_quicksort\_anim.gif}
+    
+    [2] \texttt{https://en.wikipedia.org/wiki/File:K-fold\_cross\_validation\_EN.svg}
+    
+    [3] \texttt{https://www.asimovinstitute.org/neural-network-zoo/}
+
+    
+    Tekoälyn perusteet (Elements of AI)-verkkokurssi:  \href{https://www.elementsofai.com/fi/}{https://www.elementsofai.com/fi/} 
+    \begin{itemize}
+        \item Tietääkseni keskimäärin pätevä johdanto joka on kirjoitettu ns tavalliselle kansalaiselle, mutta prof. Roosilla on vahvoja mielipiteitä siitä mikä on tulevaisuudessa mahdollista.
+    \end{itemize}
+    
+    Richard McElreath, 2018, Statistical Rethinking. \href{https://xcelab.net/rm/statistical-rethinking/}{https://xcelab.net/rm/statistical-rethinking/}.
+    \begin{itemize}
+        \item Antropologin kirjoittama johdanto moderniin tilastotieteeseen, myös sen vaikeisiin osiin, joka kattaa paljon kaikenlaista paitsi neuroverkkoja (mutta antaa pohjan niiden ymmärtämiseen).
+    \end{itemize}
+    
+
+    }
+\end{frame}
+    
+\begin{frame}{Viitteitä, linkkejä ja kirjallisuutta (2)}
+
+    Michael Nielsen, 2015, Neural Networks and Deep Learning. \href{http://neuralnetworksanddeeplearning.com/}{http://neuralnetworksanddeeplearning.com/}
+    \begin{itemize}
+        \item Vapaasti luettava internet-kirja neuroverkkojen perusteista.
+    \end{itemize}
+    
+    Efron & Hastie, 2016, Computer Age Statistical Inference. \href{https://web.stanford.edu/~hastie/CASI/}{https://web.stanford.edu/~hastie/CASI/}
+    \begin{itemize}
+        \item Kattava oppikirja tilastollisista menetelmistä hieman edistyneemmille, jossa menetelmät selitetään ja käsittelyjärjestys seuraa historiallista kehitystä tilastotieteestä nykyaikaiseen koneoppimiseen.
+    \end{itemize}
+    
+    Goodfellow, Bengio, Courville. 2016. Deep learning \href{http://www.deeplearningbook.org/}{http://www.deeplearningbook.org/}
+    \begin{itemize}
+        \item Syvien neuroverkkojen perusoppikirja edistyneille. Viime vuosien kehitystä tosin ei mukana.
+    \end{itemize}
+
 \end{frame}
 
 \end{document}
